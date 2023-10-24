@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trajectory Prediction</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/terraformer/1.0.8/terraformer.min.js"></script>
+    <script src="https://unpkg.com/terraformer-wkt-parser@1.1.2"></script>
+    <link rel="stylesheet" href="../static/css/animate.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+      integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+      crossorigin="anonymous"
+    />
+    <!-- Font Google -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!-- home -->
+
+    <div class="swiper">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <img id="swiper-image-1" src="../static/asset/home-main/1.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img id="swiper-image-2" src="../static/asset/home-main/2.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img id="swiper-image-3" src="../static/asset/home-main/3.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img id="swiper-image-4" src="../static/asset/home-main/4.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img id="swiper-image-5" src="../static/asset/home-main/5.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img id="swiper-image-6" src="../static/asset/home-main/6.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img id="swiper-image-7" src="../static/asset/home-main/7.jpg" />
+        </div>
+        <div class="swiper-slide">
+          <img id="swiper-image-8" src="../static/asset/home-main/8.jpg" />
+        </div>
+      </div>
+    </div>
+    <section>
+      <canvas class="home-main" id="home_main"></canvas>
+      <canvas class="home-word" id="home_word"></canvas>
+      <canvas class="home-title" id="home_title"></canvas>
+      <div class="empty_block"></div>
+    </section>
+
+    <!-- Research Point -->
+    <section class="about section-padding prelative" data-scroll-index="1">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sectioner-header text-center">
+              <h3>Research Point</h3>
+              <span class="line"></span>
+              <p>
+                사용자의 경로 데이터를 은닉 마코프 모델(HMM)을 이용하여 모델에
+                학습시킨 후 사용자가 이동할 것으로 예상되는 다음 지점을
+                추천하고, 그 지점 주변의 관광지와 맛집 중에서 작성된 총 리뷰 수,
+                평균 평점 및 떨어진 거리를 고려한 장소를 추천하는 시스템을
+                개발하고자 한다.<br /><br />After learning the user's path data
+                in the model using the hidden Markov model (HMM), we would like
+                to develop a system to recommend the next point where the user
+                is expected to move, and to recommend a place considering the
+                total number of reviews, average ratings, and distance written
+                among tourist destinations and restaurants around that point.
+              </p>
+            </div>
+            <div class="section-content text-center">
+              <div class="row">
+                <div class="col">
+                  <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+                    <i class="fa fa-life-ring" aria-hidden="true"></i>
+                    <h5>
+                      GPS와 위치 기반 서비스 (LBS)의 역사<br /><br />History of
+                      GPS and Location-Based Services (LBS)
+                    </h5>
+                    <p>
+                      GPS는 미국 국방부에서 개발된 위성 항법 시스템으로, 초기에
+                      상업적으로 사용할 수 없었지만 2000년 이후에는 대중에게
+                      열려 사용 가능해졌습니다. 이로 인해 위치 기반
+                      서비스(LBS)에 대한 학계와 산업계의 관심이 크게
+                      증가했습니다.<br /><br />GPS is a satellite navigation
+                      system developed by the U.S. Department of Defense that
+                      was initially commercially unavailable but became
+                      available to the public after 2000. This has led to a
+                      significant increase in academic and industrial interest
+                      in location-based services (LBS).
+                    </p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                    <h5>
+                      다양한 LBS 응용 분야<br /><br />Various LBS Applications
+                    </h5>
+                    <p>
+                      GPS 디바이스, 스마트폰, 사물인터넷(IoT), 무선 통신 기술의
+                      보급으로 다양한 LBS 분야가 등장했습니다. 이에는 네비게이션
+                      서비스, 건강 관리 서비스, 위치 기반 게임 서비스 등이
+                      포함됩니다.
+                      <br /><br />With the spread of GPS devices, smartphones,
+                      Internet of Things (IoT), and wireless communication
+                      technologies, various LBS fields have emerged. This
+                      includes navigation services, health care services,
+                      location-based gaming services, and more.
+                    </p>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="icon-box wow fadeInUp" data-wow-delay="0.6s">
+                    <i class="fa fa-bolt" aria-hidden="true"></i>
+                    <h5>
+                      위치 기반 추천 시스템 (LBRS)<br /><br />Location-based
+                      recommendation system (LBRS)
+                    </h5>
+                    <p>
+                      LBRS는 위치 정보와 사용자 선호도를 고려하여 도착지, 활동
+                      등을 추천하는 서비스입니다. 연구자들은 RNN 및 기타 기술을
+                      사용하여 모바일 사용자를 위한 LBRS를 개발하고, GPS 및 날씨
+                      정보를 활용하여 은닉 마코프 모델(HMM)을 구축하여 날씨 예측
+                      및 구매 아이템 추천과 같은 다양한 LBRS를 연구 및 개발하고
+                      있습니다.<br /><br />LBRS is a service that recommends
+                      destinations, activities, etc. in consideration of
+                      location information and user preferences. Researchers are
+                      using RNN and other technologies to develop LBRSs for
+                      mobile users, and using GPS and weather information to
+                      build hidden Markov models (HMMs) to study and develop
+                      various LBRSs such as weather prediction and purchase item
+                      recommendations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Research Problem -->
+
+    <!-- Experiment  Modal 창으로 하나하나 보여주기-->
+    <div id="services" class="services section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 offset-lg-2">
+            <div
+              class="section-heading wow fadeInDown"
+              data-wow-duration="1s"
+              data-wow-delay="0.5s"
+            >
+              <h3>How <em>to process Research</em> for Prediction</h3>
+              <img src="../static/asset/img/heading-line-dec.png" alt="" />
+              <p>
+                수집한 데이터를 Hidden Markov Model에 적합한 형식으로
+                전처리하고, 학습 결과를 가시화하기 위해 Fast Map Matching 을
+                활용하는 풀스택 모델을 구축합니다.<br /><br />Preprocess the
+                collected data in the appropriate format for the Hidden Markov
+                Model, and build a full-stack model that utilizes Fast Map
+                Matching to visualize the learning outcomes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3">
+            <div class="service-item first-service">
+              <div class="icon"></div>
+              <h4>Data Collect</h4>
+              <p>
+                제주 데이터허브를 통해 수집한 렌터카 GPS 데이터<br /><br />Collecting
+                GPS data of Jeju Island rental car through Jeju Data Hub
+              </p>
+              <div class="text-button">
+                <a
+                  id="data_collect"
+                  data-toggle="modal"
+                  data-target="#modal_collect"
+                  >Read More <i class="fa fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="service-item second-service">
+              <div class="icon"></div>
+              <h4>Pre-peocessing</h4>
+              <p>
+                모델에 적합한 형태로 데이터를 전처리<br /><br />Data processing
+                in the appropriate format for the model
+              </p>
+              <div class="text-button">
+                <a
+                  id="processing"
+                  data-toggle="modal"
+                  data-target="#modal_processing"
+                  >Read More <i class="fa fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="service-item third-service">
+              <div class="icon"></div>
+              <h4>Hidden Markov</h4>
+              <p>
+                모델을 디자인하기 위한 기반인 은닉 마르코프 모델을 사용<br /><br />
+                Hidden Markov model, a fundamental foundation for designing the
+                model
+              </p>
+              <div class="text-button">
+                <a id="hmm" data-toggle="modal" data-target="#modal_hmm"
+                  >Read More <i class="fa fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="service-item fourth-service">
+              <div class="icon"></div>
+              <h4>Fast map matching</h4>
+              <p>
+                가시화를 위한 프레임 워크인 Fast Map Matching 사용<br /><br />
+                Using Fast Map Matching, a C++ & Python framework for
+                visualization
+              </p>
+              <div class="text-button">
+                <a id="fmm" data-toggle="modal" data-target="#modal_fmm"
+                  >Read More <i class="fa fa-arrow-right"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Result -->
+
+    <section>
+      <h3>Result</h3>
+      <div class="result_ex">
+        <!-- <video id="myVideo" class="result_mov" controls>
+          <source src="../static/asset/video/result_video.mov" />
+        </video> -->
+        <div class="chart_table">
+          <div class="chart_box">
+            <canvas id="myChart"></canvas>
+          </div>
+
+          <div class="final-container">
+            <table id="result-table-container">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="result_box">
+          <p class="result_text">
+            계절 구분없이 모델을 구성했을 때와 계절별로 모델을 따로 구성했을 때
+            정확도는 큰 차이가 없었다. 그 이유는 클러스터링 결과 POI가 계절에
+            따라 방문 여부나 빈도가 달라지는 것이 아니라, 계절에 관계없이 방문
+            빈도가 높은 관광지나 음식점으로 선정되었기 때문으로 사료된다. 또한
+            사용자의 관심 지점(POI)의 개수를 25개로 선정했을 때가 가장 예측
+            성능이 높았는데, 이는 클러스터의 개수가 적을 수록 하나의 클러스터
+            안에 포함된 GPS 정보의 개수가 많아지기 때문인 것으로 생각된다. 제주
+            데이터 허브에서 제공하는 데이터는 렌터카 운전자의 성별, 나이 등과
+            같은 정보는 공개되지 않아 사용할 수 있는 정보는 사용자의 로그 기록이
+            수집된 날짜 및 시간, 방문 장소의 위도 경도 데이터밖에 없었다. 따라서
+            사용자의 특성까지 고려하여 모델을 구성할 수 없었기에 여행객의 다음
+            방문 위치 예측에 사용하는 정보는 현재 방문 위치밖에 없다는 한계가
+            있다. 또한 본 시스템은 HMM이라는 확률 모델을 사용했기 때문에 몇몇
+            사용자의 다음 이동 예상 지점이 현재 위치와는 많이 떨어져 있는 경우가
+            있었다. 주어진 시간의 한계로 인하여 적용할 수는 없었으나, 앞서
+            서술한 바와 같은 경우 이를 보정해줄 수 있는 방안을 적용할 필요가
+            있다.
+          </p>
+          <hr />
+          <p class="result_text">
+            There was no significant difference in accuracy when the model was
+            configured without any seasonal distinction and when the model was
+            configured separately by season. The reason for this is that POI was
+            selected as a tourist destination or restaurant with a high
+            frequency of visits regardless of the season, rather than whether or
+            not POI visits according to the season. In addition, the most
+            predictive performance was when the number of points of interest
+            (POIs) of users was selected as 25, which is thought to be due to
+            the fact that the smaller the number of clusters, the larger the
+            number of GPS information contained in one cluster. The data
+            provided by the Jeju data hub was not disclosed, so the only
+            information available was the date and time when the user's log
+            records were collected, and the latitude and longitude data of the
+            place of visit. Therefore, since the model could not be constructed
+            considering the characteristics of the user, there is a limitation
+            that the only information used to predict the next visit location of
+            the traveler is the current visit location. In addition, because the
+            system used a probability model called HMM, there were cases where
+            the next expected movement point of some users was far from the
+            current location. It could not be applied due to the limitation of
+            the given time, but in the case described above, it is necessary to
+            apply a method to correct it.
+          </p>
+        </div>
+      </div>
+
+      <div class="demo_map_box">
+        <div id="map1"></div>
+        <div class="btn_list">
+          <div class="list">
+            <div class="multi-button">
+              <button id="addStartPoint">
+                <i class="fas fa-fire"></i>
+                <div class="animate-normal">Start</div>
+              </button>
+              <button id="Predictbtn">
+                <i class="fas fa-play"></i>
+                <div class="animate-normal">Predict</div>
+              </button>
+              <button id="restaurant-button">
+                <i class="fas fa-store"></i>
+                <div class="animate-normal">Restaurant</div>
+              </button>
+              <button id="attraction-button">
+                <i class="fas fa-camera"></i>
+                <div class="animate-normal">Attraction</div>
+              </button>
+              <button id="db_predict">
+                <i class="fas fa-database"></i>
+                <div class="animate-normal">DB_Predict</div>
+              </button>
+              <button id="Resetbtn">
+                <i class="fas fa-trash"></i>
+                <div class="animate-normal">Reset</div>
+              </button>
+            </div>
+          </div>
+          <div id="scroll-container" style="overflow: auto; height: 500px">
+            <ol class="large-numbers"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Following subject -->
+    <section class="testimonial section-padding" data-scroll-index="4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="sectioner-header text-center white">
+              <h3>Following Subject</h3>
+              <span class="line"></span>
+            </div>
+
+            <div class="section-content">
+              <div class="row">
+                <div class="offset-md-2 col-md-8 col-sm-12">
+                  <div class="slider">
+                    <div class="slider-item">
+                      <div class="test-img">
+                        <img
+                          src="../static/asset/img/user1.jpg"
+                          alt="Placeholder"
+                          width="157"
+                          height="157"
+                        />
+                      </div>
+                      <div class="test-text">
+                        <span class="title"
+                          ><span>Seong Mu Lee</span> Back-end Developer</span
+                        >
+                        사용자의 특성까지 고려하여 모델을 구성할 수 없었기에
+                        여행객의 다음 방문 위치 예측에 사용하는 정보는 현재 방문
+                        위치밖에 없다는 한계가 있다. 또한현재는 제공된 데이터
+                        셋으로 시각화하는 과정만 진행했는데 추후에는 실제 자동차
+                        GPS 데이터 셋을 수집하여 실시간으로 시각화하는 과정을
+                        진행해보면 좋겠다
+                      </div>
+                    </div>
+                    <div class="slider-item">
+                      <div class="test-img">
+                        <img
+                          src="../static/asset/img/user2.jpg"
+                          alt="Placeholder"
+                          width="157"
+                          height="157"
+                        />
+                      </div>
+                      <div class="test-text">
+                        <span class="title"
+                          ><span>Yeong Ji Ha</span> Back-end Developer</span
+                        >
+                        본 연구에서 적용한 K-means clustering 결과 이동 중인
+                        지점 또한 관심 지점 중 하나로 선택되는 문제가 있다. 이를
+                        개선하기 위하여 Varied-k means clustering이나 으로
+                        장소를 클러스터링하여 의미 없는 장소들은 제외하거나
+                        K-medoids를 적용하여 실제 위치 정보를 중심지점으로 하는
+                        등을 적용할 수 있다. 또한 현재는 숨겨진 상태를 관심
+                        지점으로 선정하였으나, 특정 관심 지점으로 이동하려는
+                        상태로 정의하여 관측값에 따른 숨겨진 상태 시퀀스를
+                        디코딩하는 방법을 적용하여 정확도를 비교해볼 수도 있을
+                        것이다.
+                      </div>
+                    </div>
+                    <div class="slider-item">
+                      <div class="test-img">
+                        <img
+                          src="../static/asset/img/user3.jpg"
+                          alt="Placeholder"
+                          width="157"
+                          height="157"
+                        />
+                      </div>
+                      <div class="test-text">
+                        <span class="title"
+                          ><span>Jae Won Jeong</span> Front-end Developer</span
+                        >
+                        다양한 예측 모델과의 비교를 하지 못한 것이 아쉬우며,
+                        제한적인 데이터 또한 아쉽다. 프론트를 개발한 입장으로
+                        이전의 js, css, html 지식이 있었더라면 조금더 효과적인
+                        웹사이트를 구성해 짜임새있는 사이트를 구성하지 못한것이
+                        아쉽다.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <!-- Modal collect -->
+      <div
+        class="modal modal-fullscreen modal-scrollable fade"
+        id="modal_collect"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLongTitle">
+                Data Collect
+              </h1>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="dc_flex">
+                <img
+                  class="dc_logo"
+                  id="dc_img"
+                  src="/../static/asset/img/jeju_data_hub_logo.png"
+                />
+                <img
+                  class="dc_search"
+                  src="/../static/asset/img/jeju_data_hub_data_search.png"
+                />
+              </div>
+              <h3>Frequency of stay in Jeju rental car</h3>
+              <table>
+                <!-- 테이블 시작 -->
+                <tr>
+                  <!-- 첫 번째 행 -->
+                  <th>j_50_cd</th>
+                  <th>left</th>
+                  <th>top</th>
+                  <th>right</th>
+                  <th>bottom</th>
+                  <th>xcoord</th>
+                  <th>ycoord</th>
+                  <th>oid_count</th>
+                </tr>
+                <tr>
+                  <!-- 두 번째 행 -->
+                  <td>1000001</td>
+                  <td>873700</td>
+                  <td>1480900</td>
+                  <td>873750</td>
+                  <td>1480850</td>
+                  <td>873725</td>
+                  <td>1480875</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <!-- 두 번째 행 -->
+                  <td>1000001</td>
+                  <td>873700</td>
+                  <td>1480900</td>
+                  <td>873750</td>
+                  <td>1480850</td>
+                  <td>873775</td>
+                  <td>1480875</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <!-- 세 번째 행 -->
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <td>1000003</td>
+                  <td>873700</td>
+                  <td>1480800</td>
+                  <td>873750</td>
+                  <td>1480750</td>
+                  <td>873725</td>
+                  <td>1480775</td>
+                  <td>N/A</td>
+                </tr>
+                <tr>
+                  <td>1000004</td>
+                  <td>873700</td>
+                  <td>1480750</td>
+                  <td>873750</td>
+                  <td>1480700</td>
+                  <td>873725</td>
+                  <td>1480725</td>
+                  <td>N/A</td>
+                </tr>
+              </table>
+              <h3>Car Rental Hub Location Information</h3>
+              <table>
+                <!-- 테이블 시작 -->
+                <tr>
+                  <!-- 첫 번째 행 -->
+                  <th>oid</th>
+                  <th>collection_dt</th>
+                  <th>longitude</th>
+                  <th>latitude</th>
+                  <th>time</th>
+                  <th>Diff</th>
+                </tr>
+                <tr>
+                  <!-- 두 번째 행 -->
+                  <td>0c0000fd</td>
+                  <td>20200111060118</td>
+                  <td>126.4940395</td>
+                  <td>33.493728</td>
+                  <td>2020-01-11 6:01:18</td>
+                  <td>2145</td>
+                </tr>
+                <tr>
+                  <!-- 두 번째 행 -->
+                  <td>0c0000fd</td>
+                  <td>20200111065334</td>
+                  <td>126.3422986</td>
+                  <td>33.3060038</td>
+                  <td>2020-01-11 6:53:34</td>
+                  <td>1612</td>
+                </tr>
+                <tr>
+                  <!-- 세 번째 행 -->
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <td>46100018</td>
+                  <td>20200104114251</td>
+                  <td>126.4138065</td>
+                  <td>33.2543668</td>
+                  <td>2020-01-04 11:42:51</td>
+                  <td>4715</td>
+                </tr>
+                <tr>
+                  <td>46100018</td>
+                  <td>20200104130326</td>
+                  <td>126.3528063</td>
+                  <td>33.2817653</td>
+                  <td>2020-01-14 13:03:26</td>
+                  <td>9068</td>
+                </tr>
+              </table>
+              <h3>
+                Data on Jeju Island's famous restaurants & tourist attraction
+              </h3>
+              <table>
+                <!-- 테이블 시작 -->
+                <tr>
+                  <!-- 첫 번째 행 -->
+                  <th>Place</th>
+                  <th>Grade</th>
+                  <th>Review count</th>
+                  <th>Date</th>
+                  <th>Day</th>
+                </tr>
+                <tr>
+                  <td>1100고지 제주</td>
+                  <td>4.5</td>
+                  <td>26</td>
+                  <td>20201220</td>
+                  <td>일</td>
+                </tr>
+                <tr>
+                  <td>9.81테마파크</td>
+                  <td>4.5</td>
+                  <td>126</td>
+                  <td>20210620</td>
+                  <td>일</td>
+                </tr>
+                <tr>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <td>5.16도로숲터널</td>
+                  <td>5.0</td>
+                  <td>2</td>
+                  <td>20210720</td>
+                  <td>화</td>
+                </tr>
+                <tr>
+                  <td>개오름</td>
+                  <td>4.0</td>
+                  <td>3</td>
+                  <td>20210620</td>
+                  <td>일</td>
+                </tr>
+              </table>
+              <!-- 테이블 끝 -->
+              <div class="word_testimonial">
+                <div id="testimo" class="our_testimonial">
+                  <div class="posi_in">
+                    <div class="testomoniam_text">
+                      <p>
+                        2020년 1월~ 2021년 12월까지의 제주 렌터카 체류 빈도를
+                        수집하여 총 91,985,676 개의 GPS 데이터와 총 699,474개의
+                        체류거점 데이터를 확보
+                        <br />구글 관광지 리뷰 분석 데이터를 활용하여 관광지
+                        분석.<br /><br />
+                        Collecting the frequency of stay in Jeju rental cars
+                        from January 2020 to December 2021, a total of
+                        91,985,676 GPS data and a total of 699,474 stay-at-home
+                        data are obtained<br />
+                        Analysis of tourist attractions using Google Tourist
+                        Review analysis data.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal processing -->
+      <div
+        class="modal modal-fullscreen modal-scrollable fade"
+        id="modal_processing"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLongTitle">
+                Data Processing
+              </h1>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="data">
+                <div class="traj-container">
+                  <table id="traj-talbe-container">
+                    <thead></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <div class="poi-container">
+                  <table id="poi-table-container">
+                    <thead></thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <div class="data-word">
+                  <h1 class="data-title">Data <br />Preprocessing</h1>
+                  <br />
+                  <div class="container">
+                    <div class="tabs">
+                      <input type="radio" id="radio-1" name="tabs" />
+                      <label class="tab" for="radio-1">Trajectory</label>
+                      <input type="radio" id="radio-2" name="tabs" />
+                      <label class="tab" for="radio-2">POI</label>
+                      <span class="glider"></span>
+                    </div>
+                  </div>
+                  <p
+                    style="font-size: 16pt"
+                    class="data-explain"
+                    id="explain"
+                  ></p>
+                  <i class="fas fa-car trajbutton" id="trajbtn"></i>
+                  <i class="fas fa-map-marker-alt poibutton" id="poibtn"></i>
+                </div>
+              </div>
+              <h3>k-means++ Clustering</h3>
+
+              <div class="image-container">
+                <img
+                  src="../static/asset/cluster/spring_25-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/summer_25-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/fall_25-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/winter_25-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/spring_50-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/summer_50-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/fall_50-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/winter_50-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/spring_75-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/summer_75-cutout.png"
+                  class="stacked-image"
+                />
+
+                <img
+                  src="../static/asset/cluster/fall_75-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/winter_75-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/spring_100-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/summer_100-cutout.png"
+                  class="stacked-image"
+                />
+
+                <img
+                  src="../static/asset/cluster/fall_100-cutout.png"
+                  class="stacked-image"
+                />
+                <img
+                  src="../static/asset/cluster/winter_100-cutout.png"
+                  class="stacked-image"
+                />
+              </div>
+              <h3>Trajectory Mapping</h3>
+              <div class="fmm_mapping">
+                <div class="fmm_mapping_har">
+                  <img
+                    class="harversin_img"
+                    src="../static/asset/img/harversin.jpg"
+                  />
+                  <p class="harversin_text">Haversine</p>
+                  <img
+                    class="harversin_formula_img"
+                    src="../static/asset/img/harversin_formula.png"
+                  />
+                </div>
+                <img
+                  class="mapping_img"
+                  src="../static/asset/img/mapping_img.png"
+                />
+              </div>
+              <div class="word_testimonial">
+                <div id="testimo" class="our_testimonial">
+                  <div class="posi_in">
+                    <div class="testomoniam_text">
+                      <p>
+                        GPS 데이터와 POI 데이터를 활용하여 개별 사용자(oid)가
+                        언제 어떤 POI를 방문했는지를 추출하고, 방문 시간대를
+                        고려하여 추가적인 변수("time period")를 생성하는
+                        작업.<br /><br />
+                        Using GPS and POI data to extract when and which POI an
+                        individual user visited, and to generate additional
+                        variables ("time period") by considering the time zone
+                        of the visit
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3>Trajectory Mapping Result</h3>
+              <div class="final-container">
+                <table id="final-table-container">
+                  <thead></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal hmm -->
+      <div
+        class="modal modal-fullscreen modal-scrollable fade"
+        id="modal_hmm"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLongTitle">
+                Hidden Markov Model
+              </h1>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h3>What is HMM?</h3>
+              <p class="hmm_title_explain">
+                통계적 마르코프 모형의 하나로, 시스템이 은닉된 상태와 관찰가능한
+                결과의 두 가지 요소로 이루어졌다고 보는 모델<br /><br />
+                As one of statistical Martov model, it is a model that the
+                system that system was made of two elements that are made.
+              </p>
+              <img
+                class="hmm_main_img"
+                src="../static/asset/img/hidden_markov_model_img.png"
+              />
+              <div class="hmm_explain">
+                <div class="yellow_round">
+                  <h5 style="color: white">Hidden State</h5>
+                </div>
+                <p class="hmm_explain_p">
+                  시간에 대하여 은닉 변수(hidden variable) x(t)의 값이 주어질
+                  때, 특정 시간 t t에서의 은닉 변수 x(t)의 조건부 확률 분포는
+                  오직 은닉 변수 x(t-1)에만 의존하는 것을 관찰할 수 있다.
+                  <br />그 이전의 시간들 (< t-1)은 x(t)에 영향을 주지 않는데,
+                  이를 마르코프 특성이라 한다. 이와 비슷하게 시간 t에서 관측된
+                  변수 y(t)의 값은 오직 은닉 변수 x(t)에만 영향을 받는다.
+                </p>
+              </div>
+              <div class="hmm_explain">
+                <div class="yellow_round">
+                  <h5 style="color: white">Transition</h5>
+                </div>
+                <p class="hmm_explain_p">
+                  은닉 상태 공간은 범주 분포로 모델링 될 수 있는 N개의 가능한
+                  상태들 중 하나로 구성되어 있다고 가정된다. 각각의 시간 t에서
+                  은닉 변수는 총 N개의 가능한 상태들을 가질 수 있고, 시간
+                  t+1에는 은닉 변수가 N개의 가능한 상태로 전이할 확률이
+                  존재한다.<br />
+                  따라서 이러한 확률은
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <msup>
+                      <mrow>
+                        <mi>N</mi>
+                      </mrow>
+                      <mn>2</mn>
+                    </msup>
+                  </math>
+                  개의 전이 확률로써 표현될 수 있다. 이 때 한 상태의 전이 확률의
+                  합은 항상 1이 되어야 한다. 따라서 N X N 전이 확률 행렬은
+                  마르코프 행렬이다. 다른 전이 확률들을 모두 알고 있을 때 마지막
+                  전이 확률은 당연하게 도출될 수 있기 때문에 전체 전이
+                  모수(transition parameter)의 수는 N(N-1)이다.
+                </p>
+              </div>
+              <div class="hmm_explain">
+                <div class="yellow_round">
+                  <h5 style="color: white">Emission</h5>
+                </div>
+                <p class="hmm_explain_p">
+                  각 N개의 가능한 상태들에 대하여 특정 시간에서의 은닉 변수들이
+                  주어졌을 때 관측 변수들의 분포를 제어하는 출력 확률들의 집합이
+                  존재한다. 이 집합의 크기는 관측 변수들의 특성에 의해 결정된다.
+                  예를 들어, 만약 관측 변수가 범주 분포의 영향을 받고 M개의
+                  가능한 값을 가질 경우 M-1개의 독립된 모수들이 존재함을 알 수
+                  있다. 따라서 모든 은닉 상태들에 대해 전체 출력 모수들의 개수는
+                  N(M-1)개가 된다. 반면에 만약 관측 변수가 임의의 다변량
+                  정규분포를 따르는 M차원 벡터일 경우 평균에 영향을 주는 M개의
+                  모수와 공분산 행렬에 영향을 주는
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mfrac>
+                      <mrow>
+                        <mi>M</mi>
+                        <mo>(</mo>
+                        <mi>M</mi>
+                        <mo>+</mo>
+                        <mn>1</mn>
+                        <mo>)</mo>
+                      </mrow>
+                      <mn>2</mn>
+                    </mfrac>
+                  </math>
+                  개의 모수가 존재하므로 전체
+                  <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mi>N</mi>
+                    <mo>(</mo>
+                    <mi>M</mi>
+                    <mo>+</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi>M</mi>
+                        <mo>(</mo>
+                        <mi>M</mi>
+                        <mo>+</mo>
+                        <mn>1</mn>
+                        <mo>)</mo>
+                      </mrow>
+                      <mn>2</mn>
+                    </mfrac>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mfrac>
+                      <mrow>
+                        <mi>N</mi>
+                        <mi>M</mi>
+                        <mo>(</mo>
+                        <mi>M</mi>
+                        <mo>+</mo>
+                        <mn>3</mn>
+                        <mo>)</mo>
+                      </mrow>
+                      <mn>2</mn>
+                    </mfrac>
+                    <mo>=</mo>
+                    <mrow>
+                      <mi>O</mi>
+                      <mo>(</mo>
+                      <mi>N</mi>
+                      <msup>
+                        <mi>M</mi>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>)</mo>
+                    </mrow>
+                  </math>
+                  개의 출력 모수가 존재하게 된다. 이런 경우에는 M M 값이 작지
+                  않다면 관측 벡터의 각 원소들을 서로 독립으로 가정하거나, 서로
+                  독립이면서 고정된 수의 인접 원소들을 가진다는 가정 등을 통해
+                  공분산의 특징을 제한하는 것이 실용적이다.
+                </p>
+              </div>
+
+              <h3>Observation ID = 4 * POI ID+ TimePeriod ID</h3>
+              <div class="final-container">
+                <table id="hmm-table-container">
+                  <thead></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+              <h3>HMM 변수 정의</h3>
+
+              <img class="hmm_x" src="../static/asset/img/hmm_x.png" />
+              <div class="word_testimonial">
+                <div id="testimo" class="our_testimonial">
+                  <div class="posi_in">
+                    <div class="testomoniam_text">
+                      <p>
+                        초기 확률 : 각 사용자 경로의 시작 지점에서 POIi가 관측된
+                        횟수를 모든 관심 지점(POI)에 대하여 구한다. 그리고 이를
+                        전체 사용자의 수로 나누어 정의
+                        <br />전이 확률 : 은닉 상태(POI)에서 어떤 은닉
+                        상태(POI)로 이동할 확률을 의미한다. 이를 도출하기 위하여
+                        사용자 경로에서 은닉 상태의 전이가 일어나는 횟수를
+                        구하고 이를 전체 상태 전이 횟수로 나누어 준다.<br />방출
+                        확률 : 특정 은닉 상태(qi)일 때 어떤 관측값(Observation
+                        ID)가 관측된 횟수를 전체 관측 횟수로 나누어 구한다
+                        <br /><br />
+                        Start Probability : The number of times POIi is observed
+                        at the starting point of each user path is obtained for
+                        all points of interest (POI). And defined by dividing it
+                        by the total number of users.
+                        <br />Transition Probability : It refers to the
+                        probability of moving from the hidden state (POI) to a
+                        certain hidden state (POI). To derive this, the number
+                        of times the hidden state transition occurs in the user
+                        path is obtained and divided by the total number of
+                        state transitions. The number of times POIi is observed
+                        at the starting point of each user path is obtained for
+                        all points of interest (POI). and define it by dividing
+                        it by the total number of users
+                        <br />
+                        Emissiong Probability : In the case of a specific hidden
+                        state (qi), the number of observations (Observation ID)
+                        is obtained by dividing the number of observations by
+                        the total number of observations.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Modal fmm -->
+      <div
+        class="modal modal-fullscreen modal-scrollable fade"
+        id="modal_fmm"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLongTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title" id="exampleModalLongTitle">
+                Fast Map Matching
+              </h1>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="sectioner-header text-center">
+                      <h3>
+                        An open source map matching framework <br />in C++ and
+                        Python.
+                      </h3>
+                      <span class="line"></span>
+                    </div>
+                    <div class="section-content text-center">
+                      <div class="row">
+                        <div class="col-md-4 col-sm-12">
+                          <div
+                            class="media single-feature wow fadeInUp"
+                            data-wow-delay="0.2s"
+                          >
+                            <div
+                              class="media-body text-right media-right-margin"
+                            >
+                              <h5>High performance</h5>
+                              <p>
+                                C++ implementation using Rtree, optimized
+                                routing, parallel computing.
+                              </p>
+                            </div>
+                            <div class="media-right icon-border">
+                              <span
+                                class="fa fa-bolt"
+                                aria-hidden="true"
+                              ></span>
+                            </div>
+                          </div>
+                          <div
+                            class="media single-feature wow fadeInUp"
+                            data-wow-delay="0.4s"
+                          >
+                            <div
+                              class="media-body text-right media-right-margin"
+                            >
+                              <h5>Python API</h5>
+                              <p>jupyter-notebook and web demo</p>
+                            </div>
+                            <div class="media-right icon-border">
+                              <span
+                                class="fa fa-battery-full"
+                                aria-hidden="true"
+                              ></span>
+                            </div>
+                          </div>
+                          <div
+                            class="media single-feature wow fadeInUp"
+                            data-wow-delay="0.6s"
+                          >
+                            <div
+                              class="media-body text-right media-right-margin"
+                            >
+                              <h5>Scalibility</h5>
+                              <p>
+                                millions of GPS points and millions of road
+                                edges.
+                              </p>
+                            </div>
+                            <div class="media-right icon-border">
+                              <span
+                                class="fa fa-wifi"
+                                aria-hidden="true"
+                              ></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-4 d-none d-md-block d-lg-block">
+                          <div class="feature-mobile">
+                            <img
+                              src="../static/asset/img/problem.png"
+                              class="img-fluid wow fadeInUp"
+                              style="width: 17vw"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                          <div
+                            class="media single-feature wow fadeInUp"
+                            data-wow-delay="0.2s"
+                          >
+                            <div
+                              class="media-left icon-border media-right-margin"
+                            >
+                              <span
+                                class="fa fa-check-double"
+                                aria-hidden="true"
+                              ></span>
+                            </div>
+                            <div class="media-body text-left">
+                              <h5>Multiple data format</h5>
+                              <p>
+                                GPS data in CSV and Shapefile. Road network in
+                                OSM format, ESRI shapefile or Geopackage.
+                              </p>
+                            </div>
+                          </div>
+                          <div
+                            class="media single-feature wow fadeInUp"
+                            data-wow-delay="0.4s"
+                          >
+                            <div
+                              class="media-left icon-border media-right-margin"
+                            >
+                              <span
+                                class="fa fa-dollar-sign"
+                                aria-hidden="true"
+                              ></span>
+                            </div>
+                            <div class="media-body text-left">
+                              <h5>Detailed matching information</h5>
+                              <p>
+                                traversed path, geometry, individual matched
+                                edges, GPS error, etc.
+                              </p>
+                            </div>
+                          </div>
+                          <div
+                            class="media single-feature wow fadeInUp"
+                            data-wow-delay="0.6s"
+                          >
+                            <div
+                              class="media-left icon-border media-right-margin"
+                            >
+                              <span class="fa fa-hdd" aria-hidden="true"></span>
+                            </div>
+                            <div class="media-body text-left">
+                              <h5>etc.</h5>
+                              <p>
+                                Multiple algorithms - FMM and STMatch
+                                <br />Cross platform support - Unix, Mac and
+                                Windows(cygwin environment).
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3>OSMnx - Open Street Map Network X</h3>
+
+              <div class="fmm_img">
+                <img
+                  class="fmm_edge"
+                  src="../static/asset/img/qgis-edges.png"
+                />
+                <img class="fmm_node" src="../static/asset/img/qgis-node.png" />
+              </div>
+              <div class="word_testimonial">
+                <div id="testimo" class="our_testimonial">
+                  <div class="posi_in">
+                    <div class="testomoniam_text">
+                      <p>
+                        OSMnx 를 활용하여 제주도의 Geojson 파일을 Nodes와
+                        Edges로 파일을 추출하여 Road Network Data 구성<br /><br />Use
+                        OSMnx to extract files from Geojson files in Jeju Island
+                        into Nodes and Edges to configure Road Network Data
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3>STmatch</h3>
+              <div class="fmm_img">
+                <img
+                  class="fmm_stmatch"
+                  src="../static/asset/img/STmatch.png"
+                />
+              </div>
+              <div class="word_testimonial">
+                <div id="testimo" class="our_testimonial">
+                  <div class="posi_in">
+                    <div class="testomoniam_text">
+                      <p>
+                        GPU를 활용하여 처리 속도를 가속화 하여 그래프 패턴 매칭
+                        문제의 처리 속도를 대폭 향상시킨 알고리즘<br /><br />An
+                        algorithm that significantly improves the processing
+                        speed of graph pattern matching problems by accelerating
+                        processing speed using GPUs
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script
+      type="text/javascript"
+      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+    <!-- scrollIt js -->
+    <script src="../static/src/scrollIt.min.js"></script>
+    <script src="../static/src/wow.min.js"></script>
+    <script src="../static/src/leon.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="../static/src/index.js"></script>
+    <script src="../static/src/result_map.js"></script>
+    <script src="../static/src/MovingMarker.js"></script>
+
+    <script>
+      const swiper = new Swiper(".swiper", {
+        // Optional parameters
+        direction: "vertical",
+        effect: "coverflow",
+        loop: true,
+        slidesPerView: 1,
+        centeredSlides: false,
+        spaceBetween: 30,
+        freeMode: true,
+        freeModeSticky: true,
+        mousewheel: true,
+        slideToClickedSlide: true,
+      });
+      wow = new WOW();
+      wow.init();
+      $(document).ready(function (e) {
+        $(".slider").bxSlider({
+          pager: false,
+        });
+      });
+      window.onload = () => {
+        const buttons = document.querySelectorAll(".multi-button button");
+        buttons.forEach((button, index) => {
+          button.addEventListener("mouseover", () => {
+            if (index > 0) {
+              const prevTooltip = buttons[index - 1].querySelector("div");
+              prevTooltip.classList.remove("animate-right");
+              prevTooltip.classList.add("animate-left");
+            }
+            if (index < buttons.length - 1) {
+              const nextTooltip = buttons[index + 1].querySelector("div");
+              nextTooltip.classList.remove("animate-left");
+              nextTooltip.classList.add("animate-right");
+            }
+          });
+        });
+      };
+      const char_ctx = document.getElementById("myChart").getContext("2d");
+      const myChart = new Chart(char_ctx, {
+        type: "line",
+        data: {
+          labels: ["K = 25", "K = 50", "K = 75", "K = 100"],
+          datasets: [
+            {
+              label: "전체 모델",
+              data: [76.6, 74.05, 75.74, 72.46],
+              borderColor: "rgba(75, 192, 192, 1)",
+              fill: false,
+            },
+            {
+              label: "SPRING 모델",
+              data: [80.58, 75.97, 72.58, 77.53],
+              borderColor: "rgba(255, 99, 132, 1)",
+              fill: false,
+            },
+            {
+              label: "SUMMER 모델",
+              data: [80.25, 75.86, 75.7, 78.3],
+              borderColor: "rgba(255, 206, 86, 1)",
+              fill: false,
+            },
+            {
+              label: "FALL 모델",
+              data: [75.44, 71.52, 73.67, 75.27],
+              borderColor: "rgba(54, 162, 235, 1)",
+              fill: false,
+            },
+            {
+              label: "WINTER 모델",
+              data: [75.54, 78.84, 74.04, 74.54],
+              borderColor: "rgba(153, 102, 255, 1)",
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMax: 100,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
