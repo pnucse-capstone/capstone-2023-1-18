@@ -1,5 +1,5 @@
 
-# 1. Project Introduction
+# 1. Project Introduction
 
 ### 프로젝트 명 : HMM을 이용한 다음 POI 추천 및 경로 시각화
 
@@ -12,7 +12,7 @@
 ### 정재원(Front-end Developer, jaewon0957@gmail.com)
 
 
-# 3. Diagram
+# 3. Diagram
 
 ![[모델-최종.jpg]]
 
@@ -37,7 +37,7 @@
 ![[Screen Recording 2023-10-24 at 10.11.50 AM.mov]]
 
 
-# 5. Instruction
+# 5. Instruction
 
 ### FMM 
 ### mongoDB
