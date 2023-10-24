@@ -20,7 +20,7 @@
 
 생성된 모델을 기반으로 User GPS를 학습데이터의 GPS Data 와 동일한 포맷으로 변경 후 모델에 적용해 Next Top 3 POI를 추출한다. 그리고 추출된 데이터와 실 경로를 비교하여 가시화하여 보여줌.
 
-### Visualization
+### Visualization
 
 <img width="1200" alt="a" src="https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/67a95597-3dab-4b21-a699-8899b99f9761">
 <img width="1200" alt="b" src="https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/1da760f1-bfd3-4866-9c4e-cbd0096b20f3">
