@@ -42,4 +42,4 @@
 # 5. Instruction
 
 ### FMM - https://fmm-wiki.github.io
-### monngoDB - Put data in mongoDB folder
+### mongoDB - Put data in mongoDB folder
