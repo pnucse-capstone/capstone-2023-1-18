@@ -34,10 +34,10 @@
 
 # 4. Demo
 
-![[Screen Recording 2023-10-24 at 10.11.50 AM.mov]]
+
 
 
 # 5. Instruction
 
-### FMM - [https://fmm-wiki.github.io]
+### FMM - https://fmm-wiki.github.io
 ### monngoDB - Put data in mongoDB folder
