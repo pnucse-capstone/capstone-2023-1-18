@@ -31,7 +31,9 @@
 
 <img width="1200" alt="a" src="https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/67a95597-3dab-4b21-a699-8899b99f9761">
 <img width="1200" alt="b" src="https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/1da760f1-bfd3-4866-9c4e-cbd0096b20f3">
+
 <br/>
+
 위 그림은 User GPS 를 분석하여 Top3 POI 를 추천해주며 처음 Start Point에서 예측한 Top2 POI 지점으로 이동하는 실 경로를 보여준다.
 
 <br/>
@@ -39,7 +41,9 @@
 ### Result
 
 <img width="1200" alt="Screenshot 2023-10-25 at 9 02 40 PM" src="https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/a56fb287-d7d9-43bb-b34d-5bc73588466d">
+
 <br/>
+
 계절 구분없이 모델을 구성했을 때와 계절별로 모델을 따로 구성했을 때 정확도는 큰 차이가 없었다. 그 이유는 클러스터링 결과 POI가 계절에 따라 방문 여부나 빈도가 달라지는 것이 아니라, 계절에 관계없이 방문 빈도가 높은 관광지나 음식점으로 선정되었기 때문으로 사료된다. 또한 사용자의 관심 지점(POI)의 개수를 25개로 선정했을 때가 가장 예측 성능이 높았는데, 이는 클러스터의 개수가 적을 수록 하나의 클러스터 안에 포함된 GPS 정보의 개수가 많아지기 때문인 것으로 생각된다. 제주 데이터 허브에서 제공하는 데이터는 렌터카 운전자의 성별, 나이 등과 같은 정보는 공개되지 않아 사용할 수 있는 정보는 사용자의 로그 기록이 수집된 날짜 및 시간, 방문 장소의 위도 경도 데이터밖에 없었다. 따라서 사용자의 특성까지 고려하여 모델을 구성할 수 없었기에 여행객의 다음 방문 위치 예측에 사용하는 정보는 현재 방문 위치밖에 없다는 한계가 있다. 또한 본 시스템은 HMM이라는 확률 모델을 사용했기 때문에 몇몇 사용자의 다음 이동 예상 지점이 현재 위치와는 많이 떨어져 있는 경우가 있었다. 주어진 시간의 한계로 인하여 적용할 수는 없었으나, 앞서 서술한 바와 같은 경우 이를 보정해줄 수 있는 방안을 적용할 필요가 있다.
 
 ---
@@ -53,6 +57,8 @@
 ---
 
 # 5. Instruction
+
 <br/>
+
 ### FMM - https://fmm-wiki.github.io
 ### mongoDB - Put data in mongoDB folder
