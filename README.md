@@ -5,12 +5,15 @@
 
 ### 목적 : 사용자의 경로 데이터를 은닉 마코프 모델(HMM)을 이용하여 모델에 학습시킨 후 사용자가 이동할 것으로 예상되는 다음 지점을 추천한다
 
+---
+
 # 2. Team Introduction
 
 ### 이성무(Back-end Developer, rudnftjdan@gmail.com)
 ### 하연지(Back-end Developer, danna102712@gmail.com)
 ### 정재원(Front-end Developer, jaewon0957@gmail.com)
 
+---
 
 # 3. Diagram
 
