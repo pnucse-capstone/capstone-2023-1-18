@@ -50,9 +50,7 @@
 
 # 4. Demo
 
-![ezgif com-video-to-gif-2](https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/aeb237b6-8dc3-4f70-a239-38b3ea59d915)
-
-![ezgif com-video-to-gif-3](https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/1993fe43-f672-462d-a872-e9f7336c0686)
+![부산대학교 정보컴퓨터공학부 소개](http://img.youtube.com/vi/zh_gQ_lmLqE/0.jpg)](https://www.youtube.com/watch?v=zh_gQ_lmLqE)
 
 ---
 
