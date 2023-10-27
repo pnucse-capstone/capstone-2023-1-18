@@ -54,33 +54,28 @@
 
 # 5. Instruction
 
-## Need Library
+### Library & DB
 
-### FMM - https://fmm-wiki.github.io
-
-  - C++ Compiler supporting c++11 and OpenMP
-  - CMake >=3.5: cross platform building tools
-  - GDAL >= 2.2: IO with ESRI shapefile, Geometry data type
-  - Boost Graph >= 1.54.0: routing algorithms used in UBODT Generator
-  - Boost Geometry >= 1.54.0: Rtree, Geometry computation
-  - Boost Serialization >= 1.54.0: Serialization of UBODT in binary format
-  - Libosmium: a library for reading OpenStreetMap data. It requires expat and bz2.
-  - swig: used for building Python bindings.
-  - flask
-  - tornado
-    
-### mongoDB - Put data in mongoDB folder
-
+  - FMM - https://fmm-wiki.github.io
+    - C++ Compiler supporting c++11 and OpenMP
+    - CMake >=3.5: cross platform building tools
+    - GDAL >= 2.2: IO with ESRI shapefile, Geometry data type
+    - Boost Graph >= 1.54.0: routing algorithms used in UBODT Generator
+    - Boost Geometry >= 1.54.0: Rtree, Geometry computation
+    - Boost Serialization >= 1.54.0: Serialization of UBODT in binary format
+    - Libosmium: a library for reading OpenStreetMap data. It requires expat and bz2.
+    - swig: used for building Python bindings.
+    - flask
+    - tornado
   - pymongo
   - hmmlearn
+  - MongoDB
 
 ## How to use it
 
-- fmm 설치가 완료되었을 때 나와야 하는 터미널 화면
+- fmm 설치가 완료되었을 때 fmm을 입력하면 나와야 하는 터미널 화면
   
 ```
- ~/De/U/Department_/2023_1/G/Front/web_demo  fmm
-
 [info][fmm_app_config.cpp:49 ] Start reading FMM configuration from arguments
 fmm argument lists:
 --ubodt (required) <string>: Ubodt file name
@@ -110,7 +105,7 @@ fmm argument lists:
 For xml configuration, check example folder
 ```
 
-- 웹 서비스 실행
+- 웹 서비스 실행 방법
  
 ```
  ~/De/U/Department_/2023_1/G/Fr/web_demo  python web_demo.py -c stmatch_config.json
