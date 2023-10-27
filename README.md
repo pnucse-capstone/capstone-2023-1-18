@@ -59,4 +59,17 @@
 <br/>
 
 ### FMM - https://fmm-wiki.github.io
+
+  - C++ Compiler supporting c++11 and OpenMP
+  - CMake >=3.5: cross platform building tools
+  - GDAL >= 2.2: IO with ESRI shapefile, Geometry data type
+  - Boost Graph >= 1.54.0: routing algorithms used in UBODT Generator
+  - Boost Geometry >= 1.54.0: Rtree, Geometry computation
+  - Boost Serialization >= 1.54.0: Serialization of UBODT in binary format
+  - Libosmium: a library for reading OpenStreetMap data. It requires expat and bz2.
+  - swig: used for building Python bindings.
+
 ### mongoDB - Put data in mongoDB folder
+
+  - pymongo
+  - hmmlearn
