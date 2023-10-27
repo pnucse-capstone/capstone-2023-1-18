@@ -36,8 +36,6 @@
 
 + ##### User GPS 를 분석하여 Top3 POI 를 추천해주며 처음 Start Point에서 예측한 Top2 POI 지점으로 이동하는 실 경로를 보여준다.
 
-<br/>
-
 ### Result
 
 <img width="1200" alt="Screenshot 2023-10-25 at 9 02 40 PM" src="https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/a56fb287-d7d9-43bb-b34d-5bc73588466d">
@@ -56,7 +54,7 @@
 
 # 5. Instruction
 
-<br/>
+## Need Library
 
 ### FMM - https://fmm-wiki.github.io
 
@@ -75,3 +73,54 @@
 
   - pymongo
   - hmmlearn
+
+## How to use it
+
+- fmm 설치가 완료되었을 때 나와야 하는 터미널 화면
+  
+```
+ ~/De/U/Department_/2023_1/G/Front/web_demo  fmm
+
+[info][fmm_app_config.cpp:49 ] Start reading FMM configuration from arguments
+fmm argument lists:
+--ubodt (required) <string>: Ubodt file name
+--network (required) <string>: Network file name
+--network_id (optional) <string>: Network id name (id)
+--source (optional) <string>: Network source name (source)
+--target (optional) <string>: Network target name (target)
+--gps (required) <string>: GPS file name
+--gps_id (optional) <string>: GPS id name (id)
+--gps_x (optional) <string>: GPS x name (x)
+--gps_y (optional) <string>: GPS y name (y)
+--gps_timestamp (optional) <string>: GPS timestamp name (timestamp)
+--gps_geom (optional) <string>: GPS geometry name (geom)
+--gps_point (optional): if specified read input data as gps point, otherwise (default) read input data as trajectory
+--output (required) <string>: Output file name
+--output_fields (optional) <string>: Output fields
+  opath,cpath,tpath,mgeom,pgeom,
+  offset,error,spdist,tp,ep,length,duration,speed,all
+-k/--candidates (optional) <int>: Number of candidates (8)
+-r/--radius (optional) <double>: search radius (network data unit) (300)
+-e/--error (optional) <double>: GPS error (network data unit) (50)
+--reverse_tolerance (optional) <double>: proportion of reverse movement allowed on an edge
+-l/--log_level (optional) <int>: log level (2)
+-s/--step (optional) <int>: progress report step (100)
+--use_omp: use OpenMP for multithreaded map matching
+-h/--help:print help information
+For xml configuration, check example folder
+```
+
+- 웹 서비스 실행
+ 
+```
+ ~/De/U/Department_/2023_1/G/Fr/web_demo  python web_demo.py -c stmatch_config.json
+[2023-10-27 16:23:14.793] [info] [network.cpp:72] Read network from file data/edges.shp
+[2023-10-27 16:23:14.977] [info] [network.cpp:170] Number of edges 57483 nodes 20812
+[2023-10-27 16:23:14.977] [info] [network.cpp:172] Field index: id 17 source 0 target 1
+[2023-10-27 16:23:14.996] [info] [network.cpp:174] Read network done.
+[2023-10-27 16:23:14.996] [info] [network_graph.cpp:17] Construct graph from network edges start
+[2023-10-27 16:23:14.998] [info] [network_graph.cpp:30] Graph nodes 20812 edges 57483
+[2023-10-27 16:23:14.998] [info] [network_graph.cpp:31] Construct graph from network edges end
+Tornado server starting on port 5001
+Visit http://localhost:5001 to check the demo
+```
