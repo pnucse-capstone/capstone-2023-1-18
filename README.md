@@ -17,7 +17,7 @@
 
 # 3. Diagram
 
-<img width="1200" alt="b" src="https://github.com/pnucse-capstone/Capstone-Template-2023/assets/83216580/1da760f1-bfd3-4866-9c4e-cbd0096b20f3">
+![모델-최종](https://github.com/pnucse-capstone/capstone-2023-1-18/assets/83216580/8cc77f87-ec4b-4df0-ae9f-f5283ef990eb)
 
 <br/>
 
