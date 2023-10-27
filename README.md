@@ -21,9 +21,9 @@
 
 <br/>
 
-학습 데이터인 Stay Point와 GPS Data에서 결측치를 제거한 후 POI를 추출하여 DB에 저장, GPS Data를 HMM에 적용하기 적합한 포맷으로 변경한 후 HMM 모델 생성을 한다.
++ ##### 학습 데이터인 Stay Point와 GPS Data에서 결측치를 제거한 후 POI를 추출하여 DB에 저장, GPS Data를 HMM에 적용하기 적합한 포맷으로 변경한 후 HMM 모델 생성을 한다.
 
-생성된 모델을 기반으로 User GPS를 학습데이터의 GPS Data 와 동일한 포맷으로 변경 후 모델에 적용해 Next Top 3 POI를 추출한다. 그리고 추출된 데이터와 실 경로를 비교하여 가시화하여 보여줌.
++ ##### 생성된 모델을 기반으로 User GPS를 학습데이터의 GPS Data 와 동일한 포맷으로 변경 후 모델에 적용해 Next Top 3 POI를 추출한다. 그리고 추출된 데이터와 실 경로를 비교하여 가시화하여 보여줌.
 
 <br/>
 
@@ -34,7 +34,7 @@
 
 <br/>
 
-위 그림은 User GPS 를 분석하여 Top3 POI 를 추천해주며 처음 Start Point에서 예측한 Top2 POI 지점으로 이동하는 실 경로를 보여준다.
++ ##### User GPS 를 분석하여 Top3 POI 를 추천해주며 처음 Start Point에서 예측한 Top2 POI 지점으로 이동하는 실 경로를 보여준다.
 
 <br/>
 
