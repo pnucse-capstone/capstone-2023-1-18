@@ -68,7 +68,9 @@
   - Boost Serialization >= 1.54.0: Serialization of UBODT in binary format
   - Libosmium: a library for reading OpenStreetMap data. It requires expat and bz2.
   - swig: used for building Python bindings.
-
+  - flask
+  - tornado
+    
 ### mongoDB - Put data in mongoDB folder
 
   - pymongo
