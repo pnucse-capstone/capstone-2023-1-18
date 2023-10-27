@@ -284,22 +284,17 @@ def get_next_POI(hmm_model, user_trajectory):
 
     can_sequences = [np.append(X, i) for i in range(100)]
 
-    # sequences는 한 X_test 의 row에 대해 0 ~ N_COMPONENTS까지 추가한 sequence이기 때문에 모두 길이가 같다
-    scores = [
-        np.apply_along_axis(
-            lambda x: hmm_model.score(x.reshape(-1, 1)), axis=1, arr=can_sequences
-        )
-    ]
+    decodes = [hmm_model.decode(seq.reshape(-1,1)) for seq in can_sequences]
 
-    # 음의 로그 우도 확률이 높은순(절대값이 작은순)으로 정렬
-    top_3_indices = np.argsort(scores)[0][::-1] // 4
+    sorted_decode = sorted(decodes, key=lambda x:x[0])[::-1]
 
     # 순서대로 1, 2, 3
     unique_top_3_indices = []
-    for i in top_3_indices:
-        if i not in unique_top_3_indices:
-            unique_top_3_indices.append(i)
-
+    for log_likelihood, hidden_state_seq in sorted_decode:
+        recommendation_POI = hidden_state_seq[-1]
+        if recommendation_POI not in unique_top_3_indices:
+            unique_top_3_indices.append(recommendation_POI)
+        
         if len(unique_top_3_indices) == 3:
             break
     return unique_top_3_indices
