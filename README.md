@@ -69,7 +69,6 @@
     - tornado
   - pymongo
   - hmmlearn
-  - MongoDB
 
 ## How to use it
 
