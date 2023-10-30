@@ -47,7 +47,7 @@
 ---
 
 # 4. 소개 및 Demo 영상
-[![전기 졸업과제 18 산순이와 정둘이](http://img.youtube.com/vi/z5sTlz4ON2o&list=PLFUP9jG-TDp96chsm66TfMPlAJXIt6Gr9&index=16/0.jpg)](https://www.youtube.com/watch?v=z5sTlz4ON2o&list=PLFUP9jG-TDp96chsm66TfMPlAJXIt6Gr9&index=16)
+[![전기 졸업과제 18 산순이와 정둘이](https://img.youtube.com/vi/z5sTlz4ON2o&list=PLFUP9jG-TDp96chsm66TfMPlAJXIt6Gr9&index=16/0.jpg)](https://www.youtube.com/watch?v=z5sTlz4ON2o&list=PLFUP9jG-TDp96chsm66TfMPlAJXIt6Gr9&index=16)
 ---
 
 # 5. Instruction
