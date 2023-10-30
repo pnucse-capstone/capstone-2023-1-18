@@ -47,7 +47,7 @@
 ---
 
 # 4. 소개 및 Demo 영상
-<a href = "https://www.youtube.com/watch?v=z5sTlz4ON2o"> <img width="500" alt="Youtude Thumbnail" src="http://img.youtube.com/vi/z5sTlz4ON2o/hq1.jpg"> </a>
+<a href = "https://www.youtube.com/watch?v=z5sTlz4ON2o"> <img width="400" alt="Youtude Thumbnail" src="http://img.youtube.com/vi/z5sTlz4ON2o/hq1.jpg"> </a>
 ---
 
 # 5. Instruction
