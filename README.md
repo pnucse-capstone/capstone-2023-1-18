@@ -47,7 +47,9 @@
 ---
 
 # 4. 소개 및 Demo 영상
-[![전기 졸업과제 18 산순이와 정둘이](http://img.youtube.com/vi/z5sTlz4ON2o/1.jpg)](https://www.youtube.com/watch?v=z5sTlz4ON2o)
+<img width="1200" alt="Screenshot 2023-10-25 at 9 02 40 PM" src="http://img.youtube.com/vi/z5sTlz4ON2o/1.jpg">
+# http://img.youtube.com/vi/z5sTlz4ON2o/1.jpg
+[![전기 졸업과제 18 산순이와 정둘이]()](https://www.youtube.com/watch?v=z5sTlz4ON2o)
 ---
 
 # 5. Instruction
