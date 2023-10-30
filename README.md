@@ -47,9 +47,7 @@
 ---
 
 # 4. 소개 및 Demo 영상
-
-[[![부산대학교 정보컴퓨터공학부 소개](http://img.youtube.com/vi/zh_gQ_lmLqE/0.jpg)](https://www.youtube.com/watch?v=zh_gQ_lmLqE)](https://www.youtube.com/watch?v=z5sTlz4ON2o&list=PLFUP9jG-TDp96chsm66TfMPlAJXIt6Gr9&index=16)
-
+[[![전기 졸업과제 18 산순이와 정둘이](http://img.youtube.com/vi/z5sTlz4ON2o&list=PLFUP9jG-TDp96chsm66TfMPlAJXIt6Gr9&index=16/0.jpg)](https://www.youtube.com/watch?v=z5sTlz4ON2o&list=PLFUP9jG-TDp96chsm66TfMPlAJXIt6Gr9&index=16)
 ---
 
 # 5. Instruction
