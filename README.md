@@ -47,9 +47,7 @@
 ---
 
 # 4. 소개 및 Demo 영상
-<img width="1200" alt="Screenshot 2023-10-25 at 9 02 40 PM" src="http://img.youtube.com/vi/z5sTlz4ON2o/1.jpg">
-# http://img.youtube.com/vi/z5sTlz4ON2o/1.jpg
-[![전기 졸업과제 18 산순이와 정둘이]()](https://www.youtube.com/watch?v=z5sTlz4ON2o)
+<a href = "https://www.youtube.com/watch?v=z5sTlz4ON2o"> <img width="600" alt="Youtude Thumbnail" src="http://img.youtube.com/vi/z5sTlz4ON2o/1.jpg"> </a>
 ---
 
 # 5. Instruction
